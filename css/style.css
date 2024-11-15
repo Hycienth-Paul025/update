@@ -39,6 +39,7 @@ input[type="password"] {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    outline: 0;
 }
 
 button {
@@ -58,7 +59,7 @@ button:hover {
 }
 
 .error-message {
-    color: #d9534f;
+    color: red;
     font-size: 0.9em;
     display: none;
 }
@@ -76,4 +77,13 @@ button:hover {
 
 .toggle-password:hover {
     color: #000;
+}
+
+
+input.error {
+    border-color: red;
+}
+
+input.success {
+    border-color: green;
 }

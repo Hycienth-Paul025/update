@@ -1,8 +1,9 @@
 // script.js
-document.getElementById("myForm").addEventListener("submit", function(event) {
+document.getElementById("myForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form submission
 
     let isFormValid = true;
+
 
     // Name validation
     const nameInput = document.getElementById("name");
@@ -11,13 +12,19 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (nameInput.value.trim() === "") {
         nameError.textContent = "Name is required.";
         nameError.style.display = "block";
+        nameInput.classList.add("error");
+        nameInput.classList.remove("success");
         isFormValid = false;
     } else if (nameParts.length < 2) {
         nameError.textContent = "Please enter your full name (first and last name).";
         nameError.style.display = "block";
+        nameInput.classList.add("error");
+        nameInput.classList.remove("success");
         isFormValid = false;
     } else {
         nameError.style.display = "none";
+        nameInput.classList.add("success");
+        nameInput.classList.remove("error");
     }
 
     // Email validation
@@ -27,13 +34,19 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (emailInput.value.trim() === "") {
         emailError.textContent = "Email is required.";
         emailError.style.display = "block";
+        emailInput.classList.add("error");
+        emailInput.classList.remove("success");
         isFormValid = false;
     } else if (!emailPattern.test(emailInput.value)) {
         emailError.textContent = "Please enter a valid email.";
         emailError.style.display = "block";
+        emailInput.classList.add("error");
+        emailInput.classList.remove("success");
         isFormValid = false;
     } else {
         emailError.style.display = "none";
+        emailInput.classList.add("success");
+        emailInput.classList.remove("error");
     }
 
     // Phone number validation
@@ -43,9 +56,13 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (phoneInput.value.trim() === "" || !phonePattern.test(phoneInput.value)) {
         phoneError.textContent = "Phone number must be exactly 11 digits.";
         phoneError.style.display = "block";
+        phoneInput.classList.add("error");
+        phoneInput.classList.remove("success");
         isFormValid = false;
     } else {
         phoneError.style.display = "none";
+        phoneInput.classList.add("success");
+        phoneInput.classList.remove("error");
     }
 
     // Address validation
@@ -54,9 +71,13 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (addressInput.value.trim() === "") {
         addressError.textContent = "Address is required.";
         addressError.style.display = "block";
+        addressInput.classList.add("error");
+        addressInput.classList.remove("success");
         isFormValid = false;
     } else {
         addressError.style.display = "none";
+        addressInput.classList.add("success");
+        addressInput.classList.remove("error");
     }
 
     // Password validation
@@ -66,13 +87,21 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (passwordInput.value.trim() === "") {
         passwordError.textContent = "Password is required.";
         passwordError.style.display = "block";
+        passwordInput.classList.add("error");
+        passwordInput.classList.remove("success");
         isFormValid = false;
-    } else if (!passwordPattern.test(passwordInput.value)) {
+    }
+    else if (!passwordPattern.test(passwordInput.value)) {
         passwordError.textContent = "Password must contain at least one uppercase letter, one lowercase letter, one number, and the '@' symbol.";
         passwordError.style.display = "block";
+        passwordInput.classList.add("error");
+        passwordInput.classList.remove("success");
         isFormValid = false;
-    } else {
+    }
+     else {
         passwordError.style.display = "none";
+        passwordInput.classList.add("success");
+        passwordInput.classList.remove("error");
     }
 
     // Confirm Password validation
@@ -81,19 +110,27 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     if (confirmPasswordInput.value.trim() === "") {
         confirmPasswordError.textContent = "Please confirm your password.";
         confirmPasswordError.style.display = "block";
+        confirmPasswordInput.classList.add("error");
+        confirmPasswordInput.classList.remove("success");
         isFormValid = false;
     }
     else if (passwordInput.value.length < 10) {
         passwordError.textContent = "Password must be at least 10 characters long.";
         passwordError.style.display = "block";
+        confirmPasswordInput.classList.add("error");
+        confirmPasswordInput.classList.remove("success");
         isFormValid = false;
     }
     else if (confirmPasswordInput.value !== passwordInput.value) {
         confirmPasswordError.textContent = "Passwords do not match.";
         confirmPasswordError.style.display = "block";
+        confirmPasswordInput.classList.add("error");
+        confirmPasswordInput.classList.remove("success");
         isFormValid = false;
     } else {
         confirmPasswordError.style.display = "none";
+        confirmPasswordInput.classList.add("success");
+        confirmPasswordInput.classList.remove("error");
     }
 
     if (isFormValid) {
