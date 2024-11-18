@@ -146,6 +146,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
          /*  alert("Form submitted successfully!"); */
           document.getElementById("contactForm").reset(); // Clear the form
         })
+        
         .catch(error => {
             console.error('EmailJS Error:', error);
             formStatus.textContent = 'Failed to send your message. Please try again later.';
