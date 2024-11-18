@@ -1,8 +1,14 @@
+
+
+emailjs.init("7V7OrweyRRnG4wlqU");
+
 // script.js
 document.getElementById("myForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form submission
 
     let isFormValid = true;
+
+    
 
 
     // Name validation
@@ -98,7 +104,7 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
         passwordInput.classList.remove("success");
         isFormValid = false;
     }
-     else {
+    else {
         passwordError.style.display = "none";
         passwordInput.classList.add("success");
         passwordInput.classList.remove("error");
@@ -134,10 +140,26 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     }
 
     if (isFormValid) {
-        alert("Form submitted successfully!");
-        document.getElementById("myForm").reset();
+        emailjs.sendForm("service_e5qzot8", "template_xettf8k", this)
+        .then(() => {
+            window.location.href = 'https://web3forms.com/success';
+         /*  alert("Form submitted successfully!"); */
+          document.getElementById("contactForm").reset(); // Clear the form
+        })
+        .catch(error => {
+            console.error('EmailJS Error:', error);
+            formStatus.textContent = 'Failed to send your message. Please try again later.';
+            formStatus.style.color = 'red';
+        });
+         /*  alert("Form submitted successfully!"); */
     }
-});
+
+} );
+
+// Reset form when page is loaded/revisited
+window.onload = function () {
+    document.getElementById("myForm").reset();
+};
 
 // Toggle password visibility
 function togglePasswordVisibility(toggleId, inputId) {
